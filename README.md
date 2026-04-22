@@ -9,3 +9,10 @@ Funkcjonalności:
 - Streak w utrzymaniu danych nawyków
 - Statystyki (procent utrzymania nawyku, całkowita ilość odhaczeń, ulubiony nawyk)
 
+Technologie:
+- Java 25
+- Spring
+- PostgreSQL
+- Docker
+- Maven
+- Hibernate
