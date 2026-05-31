@@ -50,4 +50,7 @@ public class HabitFacade {
         habitCompletionService.delete(completionId);
     }
 
+    public HabitStatsDTO getHabitStats(Long userId){
+        return habitCompletionService.getUserStats(userId);
+    }
 }

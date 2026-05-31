@@ -72,4 +72,10 @@ public class HabitController {
         habitFacade.deleteCompletion(completionId);
         return ResponseEntity.noContent().build();
     }
+
+    @GetMapping("/stats/{userId}")
+    public ResponseEntity<HabitStatsDTO> getUserHabitStats(@PathVariable Long userId) {
+        return ResponseEntity.ok(habitFacade.getHabitStats(userId));
+
+    }
 }

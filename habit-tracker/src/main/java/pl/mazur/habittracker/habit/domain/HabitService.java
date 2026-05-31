@@ -1,24 +1,30 @@
 package pl.mazur.habittracker.habit.domain;
 
+import jakarta.persistence.Id;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import pl.mazur.habittracker.habit.constant.HabitNotFoundException;
 import pl.mazur.habittracker.habit.domain.Habit;
 import pl.mazur.habittracker.habit.domain.HabitMapper;
 import pl.mazur.habittracker.habit.domain.HabitRepository;
-import pl.mazur.habittracker.habit.internal.dto.HabitDTO;
-import pl.mazur.habittracker.habit.internal.dto.HabitRequest;
+import pl.mazur.habittracker.habit.internal.dto.*;
 import pl.mazur.habittracker.habit.constant.HabitNotFoundException;
 import pl.mazur.habittracker.habit.domain.Habit;
 import pl.mazur.habittracker.habit.domain.HabitMapper;
 import pl.mazur.habittracker.habit.domain.HabitRepository;
+import pl.mazur.habittracker.habit.internal.dto.HabitStatsDTO;
 import pl.mazur.habittracker.habit.internal.dto.HabitDTO;
 import pl.mazur.habittracker.habit.internal.dto.HabitRequest;
 import pl.mazur.habittracker.user.constant.UserNotFoundException;
 import pl.mazur.habittracker.user.domain.User;
 import pl.mazur.habittracker.user.domain.UserRepository;
 
+import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -62,4 +68,5 @@ public class HabitService {
                 .orElseThrow(() -> new HabitNotFoundException(habitId));
         habitRepository.delete(habit);
     }
+
 }

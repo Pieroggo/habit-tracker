@@ -8,4 +8,5 @@ import java.util.List;
 @Repository
 public interface HabitCompletionRepository extends JpaRepository<HabitCompletion,Long> {
     List<HabitCompletion> findAllByHabitId(Long habitId);
+    List<HabitCompletion> findByHabitIdOrderByCompletedAtDesc(Long habitId);
 }
