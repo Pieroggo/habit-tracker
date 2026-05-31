@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import pl.mazur.habittracker.user.constant.UserRole;
 
 import java.time.LocalDateTime;
 
@@ -16,4 +17,5 @@ public class UserDTO {
     private String username;
     private String email;
     private LocalDateTime createdAt;
+    private UserRole role;
 }

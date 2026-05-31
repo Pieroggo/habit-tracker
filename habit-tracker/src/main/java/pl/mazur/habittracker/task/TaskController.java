@@ -1,4 +1,4 @@
-package pl.mazur.habittracker.task.internal;
+package pl.mazur.habittracker.task;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;

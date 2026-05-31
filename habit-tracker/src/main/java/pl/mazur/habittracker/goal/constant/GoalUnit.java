@@ -5,6 +5,6 @@ public enum GoalUnit {
     LITERS,
     HOURS,
     PLN,
-    INDIVIDUAL_UNITS,
+    NUMBER,
     CUSTOM
 }

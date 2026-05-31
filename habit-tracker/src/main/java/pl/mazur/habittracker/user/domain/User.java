@@ -1,13 +1,11 @@
 package pl.mazur.habittracker.user.domain;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import pl.mazur.habittracker.user.constant.UserRole;
 
 import java.time.LocalDateTime;
 
@@ -27,6 +25,9 @@ public class User {
     private String email;
 
     private String password;
+
+    @Enumerated(EnumType.STRING)
+    private UserRole role;
 
     private LocalDateTime createdAt;
 }

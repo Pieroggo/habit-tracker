@@ -20,11 +20,6 @@ public class UserController {
         return ResponseEntity.ok(userFacade.findById(id));
     }
 
-    @PostMapping
-    public ResponseEntity<UserDTO> create(@RequestBody UserRequest request){
-        return ResponseEntity.ok(userFacade.create(request));
-    }
-
     @Secured({"ROLE_ADMIN"})
     @PatchMapping("/{id}")
     public ResponseEntity<UserDTO> update(@PathVariable Long id,@RequestBody UserRequest request){

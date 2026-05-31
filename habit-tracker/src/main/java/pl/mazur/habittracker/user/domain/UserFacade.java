@@ -14,10 +14,6 @@ public class UserFacade {
         return userService.findById(userId);
     }
 
-    public UserDTO create(UserRequest request){
-        return userService.create(request);
-    }
-
     public UserDTO update(Long userId, UserRequest request){
         return userService.update(userId,request);
     }

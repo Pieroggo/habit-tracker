@@ -19,11 +19,6 @@ public class UserService {
                 .map(userMapper::toUserDTO)
                 .orElseThrow(() -> new UserNotFoundException(userId));
     }
-    public UserDTO create(UserRequest request){
-        return userMapper.toUserDTO(
-                userRepository.save(userMapper.toUser(request))
-        );
-    }
     public UserDTO update(Long userId, UserRequest request){
         return userRepository.findById(userId)
                 .map(user -> userMapper.toUser(request))

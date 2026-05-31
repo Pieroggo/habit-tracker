@@ -4,6 +4,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
+import pl.mazur.habittracker.user.constant.UserRole;
 import pl.mazur.habittracker.user.internal.dto.UserDTO;
 import pl.mazur.habittracker.user.internal.dto.UserRequest;
 
@@ -20,6 +21,7 @@ public class UserMapper {
                 .username(user.getUsername())
                 .email(user.getEmail())
                 .createdAt(user.getCreatedAt())
+                .role(user.getRole())
                 .build();
     }
     public User toUser(UserRequest userRequest){
@@ -28,6 +30,7 @@ public class UserMapper {
                 .email(userRequest.getEmail())
                 .createdAt(LocalDateTime.now())
                 .password(passwordEncoder.encode(userRequest.getPassword()))
+                .role(UserRole.USER)
                 .build();
     }
 
