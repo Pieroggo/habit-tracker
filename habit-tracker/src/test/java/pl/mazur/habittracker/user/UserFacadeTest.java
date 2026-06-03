@@ -43,9 +43,9 @@ class UserFacadeTest {
     void shouldUpdateUser() {
         Long userId = TestUtils.randomId();
 
-        UserRequest request = UserRequestFixtures.withUsername("updatedUser");
+        UserRequest request = UserRequestFixtures.withEmail("updated@mail.com");
 
-        UserDTO userDTO = UserDTOFixtures.withUsernameAndId("updatedUser",userId);
+        UserDTO userDTO = UserDTOFixtures.withEmailAndId("updated@mail.com",userId);
 
         when(userService.update(userId, request))
                 .thenReturn(userDTO);

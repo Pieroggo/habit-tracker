@@ -53,4 +53,6 @@ public class HabitFacade {
     public HabitStatsDTO getHabitStats(Long userId){
         return habitCompletionService.getUserStats(userId);
     }
+
+    public int getHabitStreak(HabitStreakRequest request, Long habitId){return habitCompletionService.getCurrentStreak(habitId, request.getMaxBreaks());}
 }

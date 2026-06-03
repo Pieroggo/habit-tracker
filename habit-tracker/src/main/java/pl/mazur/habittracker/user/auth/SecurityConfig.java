@@ -59,9 +59,5 @@ public class SecurityConfig {
         return configuration.getAuthenticationManager();
     }
 
-    @Bean
-     public JwtService jwtService() {
-        return new JwtService();
-    }
 
 }

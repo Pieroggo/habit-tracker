@@ -4,15 +4,12 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import pl.mazur.habittracker.user.constant.UserRole;
-
-import java.time.LocalDateTime;
 
 @Builder(toBuilder = true)
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
-public class UserRequest {
-    private String email;
-    private String password;
+public class RegisterResponse {
+    String token;
+    Long userId;
 }

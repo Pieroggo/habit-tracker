@@ -22,6 +22,4 @@ public class HabitDTO {
     private HabitFrequency frequency;
 
     private LocalDate startDate;
-
-    private boolean archived;
 }

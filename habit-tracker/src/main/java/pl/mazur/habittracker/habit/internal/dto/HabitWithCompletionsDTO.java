@@ -24,8 +24,6 @@ public class HabitWithCompletionsDTO {
 
     private LocalDate startDate;
 
-    private boolean archived;
-
     private List<HabitCompletionDTO> completionRecords;
 
 }

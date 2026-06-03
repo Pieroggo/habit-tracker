@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import pl.mazur.habittracker.user.auth.AuthenticationService;
 import pl.mazur.habittracker.user.internal.dto.LoginRequest;
+import pl.mazur.habittracker.user.internal.dto.RegisterResponse;
 import pl.mazur.habittracker.user.internal.dto.TokenResponse;
 import pl.mazur.habittracker.user.internal.dto.UserRequest;
 
@@ -19,7 +20,7 @@ public class AuthenticationController {
     private final AuthenticationService authService;
 
     @PostMapping("/register")
-    public ResponseEntity<TokenResponse> register(
+    public ResponseEntity<RegisterResponse> register(
             @RequestBody UserRequest request) {
 
         return ResponseEntity.ok(authService.register(request));

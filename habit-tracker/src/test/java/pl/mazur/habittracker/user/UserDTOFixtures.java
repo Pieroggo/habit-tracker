@@ -11,7 +11,6 @@ public class UserDTOFixtures {
     public static UserDTO.UserDTOBuilder baseUser() {
         return UserDTO.builder()
                 .id(1L)
-                .username("testuser")
                 .email("test@example.com")
                 .role(UserRole.ADMIN)
                 .createdAt(LocalDateTime.now());
@@ -21,16 +20,16 @@ public class UserDTOFixtures {
         return baseUser().build();
     }
 
-    public static UserDTO withUsername(String username){
-        return baseUser().username(username).build();
+    public static UserDTO withEmail(String email){
+        return baseUser().email(email).build();
     }
 
     public static UserDTO withId(Long id){
         return baseUser().id(id).build();
     }
 
-    public static UserDTO withUsernameAndId(String username,Long id){
-        return baseUser().username(username).id(id).build();
+    public static UserDTO withEmailAndId(String email,Long id){
+        return baseUser().email(email).id(id).build();
     }
 
 }

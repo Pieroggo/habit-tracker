@@ -6,6 +6,7 @@ import pl.mazur.habittracker.task.internal.dto.TaskDTO;
 import pl.mazur.habittracker.task.internal.dto.TaskRequest;
 
 import java.util.List;
+import java.util.Optional;
 
 @Component
 @RequiredArgsConstructor
@@ -32,4 +33,6 @@ public class TaskFacade {
     public void deleteTask(Long taskId) {
         taskService.delete(taskId);
     }
+
+    public Optional<TaskDTO> completeTask(Long taskId){return taskService.complete(taskId);}
 }

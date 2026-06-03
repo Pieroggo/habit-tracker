@@ -20,7 +20,7 @@ import java.util.Optional;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Mockito.*;
-import static pl.mazur.habittracker.user.UserFixtures.withUsername;
+import static pl.mazur.habittracker.user.UserFixtures.withEmail;
 
 @ExtendWith(MockitoExtension.class)
 class UserServiceTest {
@@ -79,13 +79,13 @@ class UserServiceTest {
     void shouldUpdateUser() {
         Long userId = TestUtils.randomId();
 
-        UserRequest request = UserRequestFixtures.withUsername("updatedUser");
+        UserRequest request = UserRequestFixtures.withEmail("updated@mail.com");
 
-        User existingUser = withUsername("updatedUser");
+        User existingUser = withEmail("updated@mail.com");
 
-        User mappedUser = UserFixtures.withUsername("updatedUser");
+        User mappedUser = UserFixtures.withEmail("updated@mail.com");
 
-        UserDTO dto = UserDTOFixtures.withUsername("updatedUser");
+        UserDTO dto = UserDTOFixtures.withEmail("updated@mail.com");
 
         when(userRepository.findById(userId))
                 .thenReturn(Optional.of(existingUser));

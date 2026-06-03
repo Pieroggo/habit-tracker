@@ -5,6 +5,7 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
+import pl.mazur.habittracker.TestUtils;
 import pl.mazur.habittracker.task.domain.TaskFacade;
 import pl.mazur.habittracker.task.domain.TaskService;
 import pl.mazur.habittracker.task.internal.dto.TaskDTO;
@@ -28,7 +29,7 @@ class TaskFacadeTest {
 
     @Test
     void shouldReturnAllTasksByUserId() {
-        Long userId = 1L;
+        Long userId = TestUtils.randomId();
         TaskDTO dto = TaskDTOFixtures.withCompleteData();
 
         when(taskService.findAllByUserId(userId)).thenReturn(List.of(dto));
@@ -44,7 +45,7 @@ class TaskFacadeTest {
 
     @Test
     void shouldReturnTaskById() {
-        Long taskId = 1L;
+        Long taskId = TestUtils.randomId();
 
         TaskDTO dto = TaskDTOFixtures.withTaskId(taskId);
 
@@ -60,7 +61,7 @@ class TaskFacadeTest {
 
     @Test
     void shouldCreateTask() {
-        TaskRequest request = TaskRequestFixtures.withUserId(1L);
+        TaskRequest request = TaskRequestFixtures.withUserId(TestUtils.randomId());
 
         TaskDTO dto = TaskDTOFixtures.withCompleteData();
 
@@ -76,10 +77,10 @@ class TaskFacadeTest {
 
     @Test
     void shouldUpdateTask() {
-        Long taskId = 1L;
+        Long taskId = TestUtils.randomId();
         TaskRequest request = TaskRequestFixtures.withCompleteData();
 
-        TaskDTO dto = TaskDTOFixtures.withTaskId(1L);
+        TaskDTO dto = TaskDTOFixtures.withTaskId(TestUtils.randomId());
 
         when(taskService.update(taskId, request)).thenReturn(dto);
 
@@ -93,7 +94,7 @@ class TaskFacadeTest {
 
     @Test
     void shouldDeleteTask() {
-        Long taskId = 1L;
+        Long taskId = TestUtils.randomId();
 
         taskFacade.deleteTask(taskId);
 

@@ -7,6 +7,7 @@ import pl.mazur.habittracker.habit.internal.dto.HabitRequest;
 import pl.mazur.habittracker.habit.internal.dto.HabitWithCompletionsDTO;
 import pl.mazur.habittracker.user.domain.User;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Component
@@ -18,7 +19,6 @@ public class HabitMapper {
                 .description(habit.getDescription())
                 .frequency(habit.getFrequency())
                 .startDate(habit.getStartDate())
-                .archived(habit.isArchived())
                 .build();
     }
     public HabitWithCompletionsDTO toHabitWithCompletionsDTO(HabitDTO habitDTO, List<HabitCompletionDTO> habitCompletionRecords){
@@ -28,7 +28,6 @@ public class HabitMapper {
                 .description(habitDTO.getDescription())
                 .frequency(habitDTO.getFrequency())
                 .startDate(habitDTO.getStartDate())
-                .archived(habitDTO.isArchived())
                 .completionRecords(habitCompletionRecords)
                 .build();
     }
@@ -36,9 +35,8 @@ public class HabitMapper {
         return Habit.builder()
                 .name(request.getName())
                 .description(request.getDescription())
-                .archived(request.isArchived())
                 .frequency(request.getFrequency())
-                .startDate(request.getStartDate())
+                .startDate(LocalDate.now())
                 .user(user)
                 .build();
     }
@@ -46,9 +44,8 @@ public class HabitMapper {
         return habit.toBuilder()
                 .name(request.getName())
                 .description(request.getDescription())
-                .archived(request.isArchived())
                 .frequency(request.getFrequency())
-                .startDate(request.getStartDate())
+                .startDate(LocalDate.now())
                 .user(user)
                 .build();
     }

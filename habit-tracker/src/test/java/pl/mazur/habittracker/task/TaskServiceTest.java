@@ -5,6 +5,7 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
+import pl.mazur.habittracker.TestUtils;
 import pl.mazur.habittracker.task.constant.TaskNotFoundException;
 import pl.mazur.habittracker.task.domain.Task;
 import pl.mazur.habittracker.task.domain.TaskMapper;
@@ -41,7 +42,7 @@ class TaskServiceTest {
 
     @Test
     void shouldReturnAllTasksByUserId() {
-        Long userId = 1L;
+        Long userId = TestUtils.randomId();
 
         Task task = TaskFixtures.withCompleteData();
         TaskDTO dto = TaskDTOFixtures.withCompleteData();
@@ -61,7 +62,7 @@ class TaskServiceTest {
 
     @Test
     void shouldReturnTaskById() {
-        Long taskId = 1L;
+        Long taskId = TestUtils.randomId();
 
         Task task = TaskFixtures.withCompleteData();
         TaskDTO dto = TaskDTOFixtures.withCompleteData();
@@ -79,7 +80,7 @@ class TaskServiceTest {
 
     @Test
     void shouldThrowWhenTaskNotFoundById() {
-        Long taskId = 1L;
+        Long taskId = TestUtils.randomId();
 
         when(taskRepository.findById(taskId)).thenReturn(Optional.empty());
 
@@ -115,7 +116,7 @@ class TaskServiceTest {
 
     @Test
     void shouldThrowWhenUserNotFoundDuringCreate() {
-        Long userId = 1L;
+        Long userId = TestUtils.randomId();
 
         TaskRequest request = TaskRequestFixtures.withUserId(userId);
 
@@ -156,7 +157,7 @@ class TaskServiceTest {
 
     @Test
     void shouldThrowWhenTaskNotFoundDuringUpdate() {
-        Long taskId=1L;
+        Long taskId=TestUtils.randomId();
         User user = UserFixtures.withCompleteData();
         TaskRequest request = TaskRequestFixtures.withUserId(user.getId());
 
@@ -170,8 +171,8 @@ class TaskServiceTest {
 
     @Test
     void shouldThrowWhenUserNotFoundDuringUpdate() {
-        Long taskId = 1L;
-        Long userId = 1L;
+        Long taskId = TestUtils.randomId();
+        Long userId =TestUtils.randomId();
 
         TaskRequest request = TaskRequestFixtures.withUserId(userId);
 
@@ -186,7 +187,7 @@ class TaskServiceTest {
 
     @Test
     void shouldDeleteTask() {
-        Long taskId = 1L;
+        Long taskId = TestUtils.randomId();
 
         Task task = TaskFixtures.withCompleteData();
 
@@ -199,7 +200,7 @@ class TaskServiceTest {
 
     @Test
     void shouldThrowWhenDeletingNonExistingTask() {
-        Long taskId = 1L;
+        Long taskId = TestUtils.randomId();
 
         when(taskRepository.findById(taskId)).thenReturn(Optional.empty());
 

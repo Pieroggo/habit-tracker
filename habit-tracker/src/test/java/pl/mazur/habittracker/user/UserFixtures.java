@@ -9,7 +9,6 @@ public class UserFixtures {
     public static User.UserBuilder baseUser() {
         return User.builder()
                 .id(1L)
-                .username("testuser")
                 .email("test@example.com")
                 .password("password")
                 .role(UserRole.ADMIN)
@@ -20,7 +19,7 @@ public class UserFixtures {
         return baseUser().build();
     }
 
-    public static User withUsername(String username){
-        return baseUser().username(username).build();
+    public static User withEmail(String email){
+        return baseUser().email(email).build();
     }
 }

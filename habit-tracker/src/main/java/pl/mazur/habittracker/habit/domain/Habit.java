@@ -29,8 +29,6 @@ public class Habit {
 
     private LocalDate startDate;
 
-    private boolean archived;
-
     @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;

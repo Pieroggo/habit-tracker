@@ -19,9 +19,5 @@ public class HabitRequest {
 
     private HabitFrequency frequency;
 
-    private LocalDate startDate;
-
-    private boolean archived;
-
     private Long userId;
 }

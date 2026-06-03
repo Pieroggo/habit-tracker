@@ -15,7 +15,10 @@ import pl.mazur.habittracker.user.constant.UserNotFoundException;
 import pl.mazur.habittracker.user.domain.User;
 import pl.mazur.habittracker.user.domain.UserRepository;
 
+import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Objects;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -60,5 +63,19 @@ public class TaskService {
         Task task=taskRepository.findById(taskId)
                         .orElseThrow(() -> new TaskNotFoundException(taskId));
         taskRepository.delete(task);
+    }
+
+    public Optional<TaskDTO> complete(Long taskId){
+        Task task=taskRepository.findById(taskId).orElseThrow(()->new TaskNotFoundException(taskId));
+        System.out.println(task.isCompleted());
+        if(task.isCompleted()){
+            return Optional.empty();
+        }
+        else {
+            return Optional.of(task)
+                    .map(t -> t.toBuilder().completed(true).completedAt(LocalDateTime.now()).build())
+                    .map(taskRepository::save)
+                    .map(taskMapper::toTaskDTO);
+        }
     }
 }

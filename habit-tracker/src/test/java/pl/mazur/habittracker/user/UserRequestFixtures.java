@@ -9,7 +9,6 @@ import java.time.LocalDateTime;
 public class UserRequestFixtures {
     public static UserRequest.UserRequestBuilder baseUser() {
         return UserRequest.builder()
-                .username("testuser")
                 .email("test@example.com")
                 .password("password");
     }
@@ -18,8 +17,8 @@ public class UserRequestFixtures {
         return baseUser().build();
     }
 
-    public static UserRequest withUsername(String username){
-        return baseUser().username(username).build();
+    public static UserRequest withEmail(String email){
+        return baseUser().email(email).build();
     }
 
 }

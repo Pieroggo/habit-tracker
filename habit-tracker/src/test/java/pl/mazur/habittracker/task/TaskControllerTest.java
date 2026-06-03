@@ -9,6 +9,7 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.test.web.servlet.MockMvc;
+import pl.mazur.habittracker.TestUtils;
 import pl.mazur.habittracker.task.domain.TaskFacade;
 import pl.mazur.habittracker.task.internal.dto.TaskDTO;
 import pl.mazur.habittracker.task.internal.dto.TaskRequest;
@@ -43,11 +44,10 @@ class TaskControllerTest {
     @MockBean
     private TaskFacade taskFacade;
 
-    // ---------------- GET ALL ----------------
 
     @Test
     void shouldGetTasksByUser() throws Exception {
-        Long userId = 1L;
+        Long userId = TestUtils.randomId();
 
         TaskDTO dto = TaskDTOFixtures.withCompleteData();
 
@@ -62,11 +62,9 @@ class TaskControllerTest {
         verify(taskFacade).findAllTasksByUserId(userId);
     }
 
-    // ---------------- GET BY ID ----------------
-
     @Test
     void shouldGetTaskById() throws Exception {
-        Long taskId = 1L;
+        Long taskId = TestUtils.randomId();
 
         TaskDTO dto = TaskDTOFixtures.withCompleteData();
 
@@ -80,11 +78,9 @@ class TaskControllerTest {
         verify(taskFacade).findTaskById(taskId);
     }
 
-    // ---------------- CREATE ----------------
-
     @Test
     void shouldCreateTask() throws Exception {
-        Long userId = 1L;
+        Long userId = TestUtils.randomId();
         TaskRequest request = TaskRequestFixtures.withUserId(userId);
 
         TaskDTO dto = TaskDTOFixtures.withCompleteData();
@@ -102,12 +98,11 @@ class TaskControllerTest {
         verify(taskFacade).createTask(any(TaskRequest.class));
     }
 
-    // ---------------- UPDATE ----------------
 
     @Test
     void shouldUpdateTask() throws Exception {
-        Long taskId = 1L;
-        Long userId = 1L;
+        Long taskId = TestUtils.randomId();
+        Long userId = TestUtils.randomId();
 
         TaskRequest request = TaskRequestFixtures.withUserIdAndCompleted(userId);
 
@@ -126,11 +121,9 @@ class TaskControllerTest {
         verify(taskFacade).updateTask(eq(taskId), any(TaskRequest.class));
     }
 
-    // ---------------- DELETE ----------------
-
     @Test
     void shouldDeleteTask() throws Exception {
-        Long taskId = 1L;
+        Long taskId = TestUtils.randomId();
 
         doNothing().when(taskFacade).deleteTask(taskId);
 

@@ -6,6 +6,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import pl.mazur.habittracker.goal.domain.GoalFacade;
 import pl.mazur.habittracker.goal.internal.dto.*;
+import pl.mazur.habittracker.habit.internal.dto.HabitStreakRequest;
 
 import java.util.List;
 
@@ -74,4 +75,5 @@ public class GoalController {
         goalFacade.deleteGoalProgress(progressId);
         return ResponseEntity.noContent().build();
     }
+
 }

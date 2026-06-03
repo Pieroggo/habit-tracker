@@ -41,11 +41,10 @@ public class HabitCompletionService {
                 habitCompletionRepository.save(habitCompletionMapper.toHabitCompletion(habit,request))
         );
     }
+
     public HabitCompletionDTO update(Long habitCompletionId, HabitCompletionRequest request){
-        Habit habit=habitRepository.findById(request.getHabitId())
-                .orElseThrow(() -> new HabitNotFoundException(request.getHabitId()));
         return habitCompletionRepository.findById(habitCompletionId)
-                .map(habitCompletion -> habitCompletionMapper.toHabitCompletion(habitCompletion,request,habit))
+                .map(habitCompletion -> habitCompletionMapper.toHabitCompletion(habitCompletion,request))
                 .map(habitCompletionRepository::save)
                 .map(habitCompletionMapper::toHabitCompletionDTO)
                 .orElseThrow(() -> new HabitCompletionNotFoundException(habitCompletionId));
@@ -63,7 +62,7 @@ public class HabitCompletionService {
 
     public HabitStatsDTO getUserStats(Long userId) {
         List<Habit> habits = habitRepository.findAllByUserId(userId);
-        List<HabitCompletion> completions = new ArrayList<HabitCompletion>();
+        List<HabitCompletion> completions = new ArrayList<>();
 
         for(Habit habit : habits){
             completions.addAll(habitCompletionRepository.findAllByHabitId(habit.getId()));
@@ -139,4 +138,6 @@ public class HabitCompletionService {
 
         return streak;
     }
+
+
 }

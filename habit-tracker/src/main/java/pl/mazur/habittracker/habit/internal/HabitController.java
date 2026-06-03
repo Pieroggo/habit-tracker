@@ -48,7 +48,7 @@ public class HabitController {
     }
 
 
-    @PostMapping("/{habitId}/completions")
+    @PostMapping("/complete/{habitId}")
     public ResponseEntity<HabitCompletionDTO> createCompletion(
             @PathVariable Long habitId,
             @RequestBody HabitCompletionRequest request) {
@@ -77,5 +77,10 @@ public class HabitController {
     public ResponseEntity<HabitStatsDTO> getUserHabitStats(@PathVariable Long userId) {
         return ResponseEntity.ok(habitFacade.getHabitStats(userId));
 
+    }
+
+    @PostMapping("/streak/{habitId}")
+    public ResponseEntity<Integer> getHabitStreak(@PathVariable Long habitId, @RequestBody HabitStreakRequest request){
+        return ResponseEntity.ok(habitFacade.getHabitStreak(request,habitId));
     }
 }

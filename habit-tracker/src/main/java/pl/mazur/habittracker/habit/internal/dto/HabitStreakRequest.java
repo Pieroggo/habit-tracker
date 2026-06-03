@@ -4,15 +4,11 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import pl.mazur.habittracker.habit.constant.HabitFrequency;
-
-import java.time.LocalDate;
-import java.time.LocalDateTime;
 
 @Builder(toBuilder = true)
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
-public class HabitCompletionRequest {
-    private String note;
+public class HabitStreakRequest {
+    private int maxBreaks;
 }

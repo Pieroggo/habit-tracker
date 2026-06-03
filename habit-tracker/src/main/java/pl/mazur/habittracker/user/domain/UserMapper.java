@@ -18,7 +18,6 @@ public class UserMapper {
     public UserDTO toUserDTO(User user){
         return UserDTO.builder()
                 .id(user.getId())
-                .username(user.getUsername())
                 .email(user.getEmail())
                 .createdAt(user.getCreatedAt())
                 .role(user.getRole())
@@ -26,7 +25,6 @@ public class UserMapper {
     }
     public User toUser(UserRequest userRequest){
         return User.builder()
-                .username(userRequest.getUsername())
                 .email(userRequest.getEmail())
                 .createdAt(LocalDateTime.now())
                 .password(passwordEncoder.encode(userRequest.getPassword()))
@@ -36,7 +34,6 @@ public class UserMapper {
 
     public User toUser(User user, UserRequest userRequest){
         return user.toBuilder()
-                .username(userRequest.getUsername())
                 .email(userRequest.getEmail())
                 .password(passwordEncoder.encode(userRequest.getPassword()))
                 .build();
